@@ -1,0 +1,24 @@
+{
+  "name": "nextcloud",
+  "description": "Nextcloud server, a safe home for all your data",
+  "repository": "https://github.com/dionysio/dokku-nextcloud",
+  "success_url": "/",
+  "dokku": {
+    "plugins": [
+      {
+        "name": "proxy",
+        "commands":["proxy:ports-set $APP http:80:9000"]
+      },{
+        "name":"psql-single-container",
+        "commands":["psql:create $APP","psql:link $APP $APP"]
+      }
+    ],
+    "volumes": [
+      {
+        "host": "/var/lib/dokku/data/storage/$APP",
+        "app": "/var/www/html",
+        "phases": "deploy,run"
+      }
+    ]
+  }
+}
