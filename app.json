@@ -15,10 +15,16 @@
     ],
     "volumes": [
       {
+        "host": "/mnt/nas/nextcloud",
+        "app": "/var/www/html/data",
+        "phases": "deploy,run"
+      },
+      {
         "host": "/var/lib/dokku/data/storage/$APP",
         "app": "/var/www/html",
         "phases": "deploy,run"
       }
+
     ]
   }
 }
