@@ -2,6 +2,8 @@ FROM nextcloud:14-fpm-alpine
 
 COPY sbin/* /sbin/
 
+RUN ["chmod", "+x", "/sbin/docker-entrypoint.sh"]
+
 ENTRYPOINT ["/sbin/dokku-entrypoint.sh"]
 
 CMD ["php-fpm"]
